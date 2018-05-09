@@ -7,13 +7,24 @@ import javax.persistence.GeneratedValue;
 @Entity
 public class Organization {
     @Id
-    @GeneratedValue
     private String id;
     private String name;
     private String contactName;
     private String contactEmail;
     private String contactPhone;
     
+    public Organization() {
+        super();
+    }
+    public Organization(String id,String name,
+    String contactName, String contactEmail, 
+    String contactPhone) {
+        this.id=id;
+        this.name=name;
+        this.contactName=contactName;
+        this.contactEmail=contactEmail;
+        this.contactPhone=contactPhone;
+    }
       public String getId() {
         return id;
     }

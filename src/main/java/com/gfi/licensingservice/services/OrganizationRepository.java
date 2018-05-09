@@ -6,7 +6,7 @@ import com.gfi.licensingservice.model.Organization;
 
 
 public interface OrganizationRepository
- extends JpaRepository<Organization, Long> {
+ extends JpaRepository<Organization, String> {
 
 
 }
