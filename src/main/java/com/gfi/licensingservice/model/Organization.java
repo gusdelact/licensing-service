@@ -1,7 +1,13 @@
 package com.gfi.licensingservice.model;
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
 
+@Entity
 public class Organization {
-    
+    @Id
+    @GeneratedValue
     private String id;
     private String name;
     private String contactName;
