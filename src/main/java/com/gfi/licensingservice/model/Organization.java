@@ -64,4 +64,10 @@ public class Organization {
     public void setContactPhone(String contactPhone) {
         this.contactPhone = contactPhone;
     }
+    
+    @Override
+    public String toString() {
+        return String.format("%s %s %s %s %s",
+        id,name,contactName,contactEmail,contactPhone);
+    }
 }
