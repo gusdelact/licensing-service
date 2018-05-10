@@ -4,8 +4,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import com.gfi.licensingservice.model.Organization;
-import com.gfi.licensingservice.services.OrganizationRepository;
+import com.gfi.licensingservice.model.License;
+import com.gfi.licensingservice.repository.LicenseRepository;
 import java.util.ArrayList;
 
 @Component
@@ -17,23 +17,43 @@ public class LicenseRepositoryCommandLine
 			.getLogger(LicenseRepositoryCommandLine.class);
 
    @Autowired
-   private OrganizationRepository orgRepository;
+   private LicenseRepository licRepository;
    
    @Override
    public void run(String... arg0) throws Exception {
-        ArrayList<Organization> datos =
-          new ArrayList<Organization>();
+        ArrayList<License> datos =
+          new ArrayList<License>();
 	    
 	    datos.add(new 
-	       Organization("1","Finanzas","juan",
-	            "juan@gfi","55667788") );
+	       License()
+	       .withId("1")
+	       .withLicenseMax(10)
+	       .withLicenseAllocated(0)
+	       .withLicenseType("CPU Bounded")
+	       .withProductName("Oracle WebLogic Server 12c")
+	       .withOrganizationId("1")
+	     );
+	     
+	     	    datos.add(new 
+	       License()
+	       .withId("2")
+	       .withLicenseMax(20)
+	       .withLicenseAllocated(0)
+	       .withLicenseType("CPU Bounded")
+	       .withProductName("Oracle RDBMS 12c")
+	        .withOrganizationId("2")
+	     );
+	         
 	    datos.add(new 
-	       Organization("2","Recursos Humanos","gaby",
-	            "gaby@gfi","55667799") );
-	     datos.add(new 
-	       Organization("3","TI","jose",
-	            "jose@gfi","55447788") );        
-	    orgRepository.saveAll(datos);
+	       License()
+	       .withId("3")
+	       .withLicenseMax(100)
+	       .withLicenseAllocated(0)
+	       .withLicenseType("CPU Bounded")
+	       .withProductName("Oracle Enterpise Linux")
+	        .withOrganizationId("3")
+	     );
+	    licRepository.saveAll(datos);
 	    log.info("Datos de prueba creados : " + datos);
    }      
       
